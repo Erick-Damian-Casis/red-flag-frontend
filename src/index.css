@@ -1,6 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* font-family: 'Rubik Vinyl', cursive; */
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap');
+/* font-family: 'Titan One', cursive; */
+
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+
+/* font-family: 'Oleo Script', cursive; */
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap');
+
+/* font-family: 'Hind Vadodara', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@300&display=swap');
+
 
 body {
   margin: 0;
