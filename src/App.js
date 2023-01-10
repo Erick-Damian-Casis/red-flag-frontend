@@ -1,49 +1,31 @@
-import { BsFillCartFill } from "react-icons/bs";
+import {BrowserRouter, Routes as RouteGroup, Route} from "react-router-dom";
+import Home from "./pages/Home";
+import Help from "./pages/Help";
+import Car from "./pages/Car";
+import Product from "./pages/Product";
+import Profile from "./pages/Profile";
+import Auth from "./pages/Auth";
+import Navbar from "./components/navBar/Navbar";
+import {useState} from "react";
+import Option from "./pages/Option";
 
-import { BsPersonFill } from "react-icons/bs";
-import ProductCard from "./components/productos/ProductCard";
-import Gender from "./components/productos/Gender";
 function App() {
-  const itemsNav= [{
-    item: 'Inicio',
-    path: '/'
-  },{
-    item: 'Tienda',
-    path: '/'
-  },{
-    item: 'Ayuda',
-    path: '/'
-  }];
+    const [user, setUser]= useState('Erick')
 
   return (
     <div className="">
-      <nav>
-        <div>
-          <ul className="flex py-4 px-16 bg-white justify-between">
-           <li>
-             <p className='font-titan text-3xl text-orange-500' >Red Flag</p>
-           </li>
-            <ul className='w-20 flex justify-between items-center'>
-                <li>
-                    <BsFillCartFill className='text-2xl text-orange-500 hover:opacity-25'></BsFillCartFill>
-                </li>
-                <li>
-                    <BsPersonFill className='text-3xl text-orange-500 hover:opacity-25'></BsPersonFill>
-                </li>
-            </ul>
-          </ul>
-        </div>
-        <div>
-          <ul className="flex py-4 px-16 bg-azul justify-between items-center">
-            {itemsNav.map(value=>{
-              return(
-                  <li className="text-md text-orange-500 tracking-wide cursor-pointer hover:border-white hover:border-b-2 border-b-2 border-transparent transition duration-300">{value.item}</li>
-              )
-            })}
-          </ul>
-        </div>
-      </nav>
-        <Gender></Gender>
+        <BrowserRouter>
+            {user !== '' && <Navbar></Navbar>}
+            <RouteGroup>
+                <Route path='/Auth' element={<Auth/>}/>
+                <Route path='/home' element={<Home/>}/>
+                <Route path='/cars' element={<Car/>}/>
+                <Route path='/help' element={<Help/>}/>
+                <Route path='/products' element={<Product/>}/>
+                <Route path='/profiles' element={<Profile/>}/>
+                <Route path='/options' element={<Option/>}/>
+            </RouteGroup>
+        </BrowserRouter>
     </div>
   );
 }
