@@ -11,6 +11,7 @@ export default function FormLogin({handleIsLogin}){
     const onSubmit = (data) =>{
         login(data).then(response=>{
             window.localStorage.setItem('loggedUser', JSON.stringify(response.token))
+            console.log(response.data)
             setToken(response.token)
             redirect(response.data.role[0])
         }).catch(error=>console.log(error))
@@ -19,7 +20,7 @@ export default function FormLogin({handleIsLogin}){
         if(user === 'client'){
             navigate('/home')
         }else{
-            navigate('/Admin')
+            navigate('/products')
         }
     }
 

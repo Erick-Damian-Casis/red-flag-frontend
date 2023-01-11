@@ -1,11 +1,20 @@
 import {useForm} from "react-hook-form";
 import {registerUser} from "../../services/AuthService";
+import { BsFillCameraFill } from "react-icons/bs";
 
 export default function FormRegister({handleIsLogin, isLogin}){
     const { register, handleSubmit, formState:{errors} }=useForm();
 
     const onSubmit=(data)=>{
-        registerUser(data).then(response=>{
+        const formData = new FormData();
+        formData.append('name', data.name);
+        formData.append('email', data.email);
+        formData.append('address', data.address);
+        formData.append('password', data.password);
+        formData.append('phone', data.phone);
+        formData.append('photoProfile', data.photoProfile[0]);
+
+        registerUser(formData).then(response=>{
             console.log(response)
         })
     }
@@ -14,7 +23,7 @@ export default function FormRegister({handleIsLogin, isLogin}){
         <div className="w-full min-h-screen bg-gray-50 flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
             <div className="w-full sm:max-w-md p-5 mx-auto">
                 <h2 className="mb-12 text-center text-5xl font-extrabold">Registrarse.</h2>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
                         <div className="flex pb-4">
                             <div className="w-1/2 transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-red-500">
                                 {errors.name?.type==='required'&&  <p className="text-red-400 text-sm">* Este campo es requerido</p>}
@@ -88,6 +97,20 @@ export default function FormRegister({handleIsLogin, isLogin}){
                             />
                         </div>
                     </div>
+                    <div className="flex items-center justify-center bg-grey-lighter">
+                        <label
+                            className="hover:bg-gray-100 w-64 flex flex-col items-center px-2 py-3 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer">
+                            <BsFillCameraFill/>
+                            <span className="mt-2 text-base leading-normal">Subir Foto</span>
+                            <input type='file' className="hidden"
+                                   {...register('photoProfile',{
+                                       required: true
+                                   })}
+                            />
+                            {errors.photoProfile?.type==='required'&&  <p className="text-red-400 text-sm">* Este campo es requerido</p>}
+                        </label>
+                    </div>
+
 
                     <div className="mt-6">
                         <button

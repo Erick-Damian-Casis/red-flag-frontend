@@ -1,41 +1,34 @@
-import {BsFillCartFill} from "react-icons/bs";
+import {FiLogOut} from "react-icons/fi";
 import { Link } from "react-router-dom";
-import OptionProfile from "./OptionProfile";
-import {useState} from "react";
 
-export default function Navbar(){
+
+export default function NavbarAdmin(){
     const itemsNav= [{
-        item: 'Inicio',
-        path: '/home'
+        item: 'Productos',
+        path: '/products'
     },{
-        item: 'Ayuda',
-        path: '/help'
-    }];
-
-    const [optionProfile, setOptionProfile]=useState(false)
-
-    const openOption=()=>{
-        setOptionProfile(!optionProfile)
+        item: 'Usuarios',
+        path: '/users'
+    },{
+        item: 'Ventas',
+        path: '/sales'
+    },{
+        item: 'Chat',
+        path: '/chats'
     }
+    ];
+
 
     return(
         <nav>
-            {optionProfile && <OptionProfile openOption={openOption} />}
             <div>
                 <ul className="flex py-2 px-16 bg-white justify-between items-center">
 
                     <li>
                         <Link to='home' className='font-titan text-3xl text-orange-500' >Red Flag</Link>
                     </li>
-                    <ul className='w-28 h-full flex justify-between items-center'>
-                        <li className='w-12'>
-                            <Link to='cars'>
-                                <BsFillCartFill className='text-2xl text-orange-500 hover:opacity-25'></BsFillCartFill>
-                            </Link>
-                        </li>
-                        <li className='w-12' onClick={()=>openOption()}>
-                                <img className="w-full h-full object-cover object-center rounded-full" src="http://127.0.0.1:8000/storage/photoProfiles/3ahDnf7IOKVBVAIult7JRQHKY6UiyZm1JkmEDZN2.jpg" alt=""/>
-                        </li>
+                    <ul className='text-azul hover:text-orange-600 cursor-pointer'>
+                        <FiLogOut/>
                     </ul>
                 </ul>
             </div>
