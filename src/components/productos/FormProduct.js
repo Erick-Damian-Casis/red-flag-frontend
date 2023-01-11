@@ -1,6 +1,6 @@
-import {BsFillCameraFill, BsFillCloudArrowUpFill} from "react-icons/bs";
+import {BsFillCloudArrowUpFill} from "react-icons/bs";
 import {useForm} from "react-hook-form";
-import {registerUser} from "../../services/AuthService";
+
 
 export default function FormProduct({closeModal}){
     const {handleSubmit,register,formState:{errors}}=useForm()
