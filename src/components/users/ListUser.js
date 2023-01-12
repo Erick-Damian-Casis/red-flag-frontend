@@ -1,7 +1,8 @@
-import TablePurchase from "../TablePurchase";
 import TableUser from "./TableUser";
 
 export default function ListUser(){
+
+
     return(
         <section>
             <div className="flex flex-col p-12">

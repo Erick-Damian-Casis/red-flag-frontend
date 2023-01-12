@@ -11,7 +11,7 @@ export default function OptionUser(){
             </Link>
             <Link to='/profiles'>
                 <div className="rounded-[15px] bg-orange-600 w-96 h-80 p-6 flex items-center hover:bg-orange-500 cursor-pointer">
-                    <p className="text-[40px] font-titan text-center text-white">Ver información perosnal</p>
+                    <p className="text-[40px] font-titan text-center text-white">Ver información personal</p>
                 </div>
             </Link>
             <Link to='/wishes'>

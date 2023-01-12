@@ -17,7 +17,7 @@ export default function FormLogin({handleIsLogin}){
         }).catch(error=>console.log(error))
     }
     const redirect=(user)=>{
-        if(user === 'client'){
+        if(user === 'user'){
             navigate('/home')
         }else{
             navigate('/products')

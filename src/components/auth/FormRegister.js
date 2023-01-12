@@ -16,6 +16,7 @@ export default function FormRegister({handleIsLogin, isLogin}){
 
         registerUser(formData).then(response=>{
             console.log(response)
+            isLogin()
         })
     }
 
