@@ -1,18 +1,51 @@
 import {BsFillCloudArrowUpFill} from "react-icons/bs";
 import {useForm} from "react-hook-form";
+import {useEffect, useState} from "react";
+import {createProduct, getCategories, getGenders} from "../../services/PrivateServices";
 
 
-export default function FormProduct({closeModal}){
+export default function FormProduct({closeModal,addProduct}){
     const {handleSubmit,register,formState:{errors}}=useForm()
+    const [genders, setGenders]=useState([]);
+    const [categories, setCategories]=useState([]);
+
+    useEffect(()=>{
+        getGenders().then(
+            response=>{
+                setGenders(response.data)
+            }
+        )
+        getCategories().then(
+            response=>{
+                setCategories(response.data)
+            }
+        )
+    },[])
 
     const onSubmit=(data)=>{
-        console.log(data)
-        // const formData = new FormData();
+        const categoryId = parseFloat(data.category.id)
+        const genderId = parseFloat(data.gender.id)
+        const formData = new FormData();
+        formData.append('name', data.name);
+        formData.append('stock', data.stock);
+        formData.append('category', categoryId);
+        formData.append('gender', genderId);
+        formData.append('price', data.price);
+        formData.append('discount', data.discount);
+        formData.append('description', data.description);
+        formData.append('state', data.state);
+        formData.append('image', data.image[0]);
+
+        console.log(formData)
+        createProduct(formData).then(response=>{
+            addProduct(response.data)
+            closeModal();
+        })
 
     }
     return(
         <div className="h-full fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-center">
-            <form className="flex flex-col bg-white p-6  rounded w-1/3" onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
+            <form className="flex flex-col bg-white p-6 rounded w-1/2" onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
                 {/*Title*/}
                 <h1 className="text-center text-2xl font-bold text-gray-600 mb-5">
                     Agregar Producto
@@ -30,9 +63,38 @@ export default function FormProduct({closeModal}){
                     />
                     <label htmlFor="floating_name"
                            className="absolute text-sm text-azul duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-orange-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                    >Nombre
+                    >Nombre del Producto
                     </label>
                     {errors.name?.type==="required"&& <p  className="text-red-400 text-sm">* El campo es requerido</p>}
+                </div>
+                {/* category and gender */}
+                <div className="flex grid grid-cols-2 space-x-2">
+                    {/* category */}
+                    <div className="w-full mb-0">
+                        <select className="w-full py-4 px-0 bg-azul text-orange-600 placeholder:font-semibold rounded hover:ring-1 outline-orange-600"
+                                {...register("category.id")}>
+                            {categories.length
+                                && categories.map(value => {
+                                    return (
+                                        <option key={value.id} value={value.id}>{value.name}</option>
+                                    )
+                                }) }
+                        </select>
+                    </div>
+
+                    {/* gender */}
+                    <div className="w-full mb-0">
+                        <select className="w-full py-4 px-0 bg-azul text-orange-600 placeholder:font-semibold rounded hover:ring-1 outline-orange-600"
+                                {...register("gender.id")}>
+                            {genders.length
+                                && genders.map(value => {
+                                    return (
+                                        <option key={value.id} value={value.id}>{value.name}</option>
+                                    )
+                                }) }
+                        </select>
+                    </div>
+
                 </div>
 
                 {/* Precio */}
@@ -59,7 +121,7 @@ export default function FormProduct({closeModal}){
                            id="floating_stock"
                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-azul appearance-none focus:border-orange-600 focus:outline-none focus:ring-0 peer"
                            placeholder=" "
-                           type="text"
+                           type="number"
                            {...register('stock',{
                                required: true
                            })}
@@ -76,7 +138,8 @@ export default function FormProduct({closeModal}){
                            id="floating_discount"
                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-azul appearance-none focus:border-orange-600 focus:outline-none focus:ring-0 peer"
                            placeholder=" "
-                           type="text"
+                           type="number"
+                           step='0.01'
                            {...register('discount',{
                                required: true
                            })}

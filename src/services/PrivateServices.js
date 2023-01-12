@@ -1,6 +1,6 @@
 import axios from "axios";
 const URL_PRODUCTS = 'http://127.0.0.1:8000/api/v1/private/products/';
-const URL_CATALOGUES = 'http://127.0.0.1:8000/api/v1/private/catalogues';
+const URL_CATALOGUES = 'http://127.0.0.1:8000/api/v1/private/';
 const URL_CARS = 'http://127.0.0.1:8000/api/v1/private/cars/';
 const URL_SALES = 'http://127.0.0.1:8000/api/v1/private/sales';
 const URL_USERS = 'http://127.0.0.1:8000/api/v1/private/users/';
@@ -67,8 +67,35 @@ export const destroyProduct =(id)=>{
  *****************************************************************/
 
 
-export const getCatalogues =()=>{
-    const request = axios(`${URL_CATALOGUES}`,{
+export const getGenders =()=>{
+    const request = axios(`${URL_CATALOGUES}gender-catalogues`,{
+        headers:{
+            Authorization: token
+        }
+    })
+    return request.then(response=>response.data)
+}
+
+export const getCategories =()=>{
+    const request = axios(`${URL_CATALOGUES}category-catalogues`,{
+        headers:{
+            Authorization: token
+        }
+    })
+    return request.then(response=>response.data)
+}
+
+export const getColors =()=>{
+    const request = axios(`${URL_CATALOGUES}color-catalogues`,{
+        headers:{
+            Authorization: token
+        }
+    })
+    return request.then(response=>response.data)
+}
+
+export const getSizes =()=>{
+    const request = axios(`${URL_CATALOGUES}size-catalogues`,{
         headers:{
             Authorization: token
         }

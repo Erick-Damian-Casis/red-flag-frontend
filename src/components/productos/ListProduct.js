@@ -1,12 +1,33 @@
-import TablePurchase from "../TablePurchase";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import FormProduct from "./FormProduct";
+import TableProduct from "./TableProduct";
+import {destroyProduct, getProducts} from "../../services/PrivateServices";
 
 export default function ListProduct(){
     const [isOpen,setIsOpen]=useState(false)
+    const [products,setProducts]=useState([])
 
     const handleFormModal=()=>{
         setIsOpen(!isOpen)
+    }
+
+    useEffect(()=>{
+        getProducts().then(response=>{
+            setProducts(response.data)
+            console.log(response.data)
+        })
+
+    },[])
+
+    const deleteProduct=(product)=>{
+        destroyProduct(product).then(response=>{
+            console.log(response.data)
+            setProducts(products.filter(value=> value.id !== product))
+        })
+    }
+
+    const addProduct=(product)=>{
+        setProducts([...products,product])
     }
 
     return(
@@ -19,12 +40,12 @@ export default function ListProduct(){
                     </button>
                     <div className="p-4">
                         <div className="overflow-x-auto">
-                            <TablePurchase/>
+                            <TableProduct products={products} deleteProduct={deleteProduct} />
                         </div>
                     </div>
                 </div>
             </div>
-            {isOpen && <FormProduct addFood={"aaa"} closeModal={handleFormModal}></FormProduct>}
+            {isOpen && <FormProduct addProduct={addProduct} closeModal={handleFormModal}></FormProduct>}
         </section>
     )
 }

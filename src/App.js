@@ -15,7 +15,7 @@ import Shop from "./pages/Shop";
 
 
 function App() {
-    const [user, setUser]= useState('admin')
+    const [user, setUser]= useState('')
 
   return (
     <div className="">
@@ -29,7 +29,7 @@ function App() {
                 <Route path='/home' element={<Home/>}/>
                 <Route path='/cars' element={<Car/>}/>
                 <Route path='/help' element={<Help/>}/>
-                <Route path='/shop' element={<Shop/>}/>
+                <Route path='home/shop/:gender' element={<Shop/>}/>
                 <Route path='/profiles' element={<Profile/>}/>
                 <Route path='/options' element={<Option/>}/>
                 <Route path='/purchases' element={<Purchase/>}/>
