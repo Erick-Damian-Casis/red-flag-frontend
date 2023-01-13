@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function OptionProfile({openOption}){
+export default function OptionProfile({openOption, handleLogout}){
 
     return(
             <aside className="w-64 absolute top-2 right-28 z-10" aria-label="Sidebar">
@@ -34,7 +34,7 @@ export default function OptionProfile({openOption}){
                                 </p>
                             </Link>
                         </li>
-                        <li>
+                        <li onClick={()=>handleLogout()}>
                             <p
                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <svg className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"

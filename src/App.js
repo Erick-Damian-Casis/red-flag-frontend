@@ -12,20 +12,23 @@ import NavbarAdmin from "./components/navBar/NavbarAdmin";
 import Purchase from "./pages/Purchase";
 import User from "./pages/User";
 import Shop from "./pages/Shop";
+import {set} from "react-hook-form";
 
 
 function App() {
-    const [user, setUser]= useState('')
-
+    const [isLogged, setIsLogged]=useState(false)
+    const userLogin=()=>{
+        setIsLogged(!isLogged)
+    }
   return (
-    <div className="">
+    <div>
         <BrowserRouter>
-            {user === 'client'
-                ? <Navbar/>
-                :<NavbarAdmin/>
+            {
+                isLogged &&
+                <Navbar userLogout={userLogin}/>
             }
             <RouteGroup>
-                <Route path='/Auth' element={<Auth/>}/>
+                <Route path='/auth' element={<Auth userLogin={userLogin}/>}/>
                 <Route path='/home' element={<Home/>}/>
                 <Route path='/cars' element={<Car/>}/>
                 <Route path='/help' element={<Help/>}/>

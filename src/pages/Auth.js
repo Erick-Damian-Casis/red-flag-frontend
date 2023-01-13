@@ -3,7 +3,7 @@ import FormRegister from "../components/auth/FormRegister";
 import {useState} from "react";
 import ecommerce from "./../assets/ecommerce.jpg"
 
-export default function Auth(){
+export default function Auth({userLogin}){
     const [isLogin, setIsLogin]=useState(true);
 
     const handleIsLogin=()=>{
@@ -17,7 +17,7 @@ export default function Auth(){
             </div>
             <div className="flex w-3/4 justify-center items-center bg-white">
                 { isLogin ?
-                    <FormLogin handleIsLogin={handleIsLogin}/> :
+                    <FormLogin handleIsLogin={handleIsLogin} userLogin={userLogin}/> :
                     <FormRegister handleIsLogin={handleIsLogin} isLogin={handleIsLogin}/>
                 }
             </div>

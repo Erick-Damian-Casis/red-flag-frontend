@@ -1,9 +1,8 @@
 import {FiLogOut} from "react-icons/fi";
-import {Link, useNavigate} from "react-router-dom";
-import {logout} from "../../services/PrivateServices";
+import {Link} from "react-router-dom";
 
 
-export default function NavbarAdmin(){
+export default function NavbarAdmin({handleLogout}){
     const itemsNav= [{
         item: 'Productos',
         path: '/products'
@@ -18,15 +17,6 @@ export default function NavbarAdmin(){
         path: '/chats'
     }
     ];
-
-    const navigate = useNavigate()
-    const handleLogout=()=>{
-        window.localStorage.removeItem('loggedUser')
-        navigate('/auth')
-        logout() ().then(response=>{
-            console.log(response)
-        })
-    }
 
 
     return(

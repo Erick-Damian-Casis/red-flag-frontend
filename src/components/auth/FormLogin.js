@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import {login} from "../../services/AuthService";
 import {setToken} from "../../services/PrivateServices";
 
-export default function FormLogin({handleIsLogin}){
+export default function FormLogin({handleIsLogin, userLogin}){
     const {register, formState:{errors}, handleSubmit}=useForm();
     const navigate = useNavigate();
 
@@ -11,9 +11,10 @@ export default function FormLogin({handleIsLogin}){
     const onSubmit = (data) =>{
         login(data).then(response=>{
             window.localStorage.setItem('loggedUser', JSON.stringify(response.token))
-            console.log(response.data)
+            window.localStorage.setItem('roleUser', JSON.stringify(response.data.role[0]))
             setToken(response.token)
             redirect(response.data.role[0])
+            userLogin()
         }).catch(error=>console.log(error))
     }
     const redirect=(user)=>{
