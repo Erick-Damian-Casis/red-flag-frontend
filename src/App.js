@@ -6,7 +6,7 @@ import Product from "./pages/Product";
 import Profile from "./pages/Profile";
 import Auth from "./pages/Auth";
 import Navbar from "./components/navBar/Navbar";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Option from "./pages/Option";
 import NavbarAdmin from "./components/navBar/NavbarAdmin";
 import Purchase from "./pages/Purchase";
@@ -17,9 +17,11 @@ import {set} from "react-hook-form";
 
 function App() {
     const [isLogged, setIsLogged]=useState(false)
+
     const userLogin=()=>{
         setIsLogged(!isLogged)
     }
+
   return (
     <div>
         <BrowserRouter>

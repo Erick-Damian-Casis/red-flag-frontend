@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import OptionProfile from "./OptionProfile";
 import {useState} from "react";
 
-export default function NavBarUser({openOption}){
+export default function NavBarUser({openOption, photo}){
+
+
+
     const itemsNav= [{
         item: 'Inicio',
         path: '/home'
@@ -27,7 +30,7 @@ export default function NavBarUser({openOption}){
                             </Link>
                         </li>
                         <li className='w-12' onClick={()=>openOption()}>
-                            <img className="w-full h-full object-cover object-center rounded-full" src="http://127.0.0.1:8000/storage/photoProfiles/3ahDnf7IOKVBVAIult7JRQHKY6UiyZm1JkmEDZN2.jpg" alt=""/>
+                            <img className="w-full h-full object-cover object-center rounded-full" src={photo} alt=""/>
                         </li>
                     </ul>
                 </ul>

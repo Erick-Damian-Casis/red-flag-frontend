@@ -12,6 +12,7 @@ export default function FormLogin({handleIsLogin, userLogin}){
         login(data).then(response=>{
             window.localStorage.setItem('loggedUser', JSON.stringify(response.token))
             window.localStorage.setItem('roleUser', JSON.stringify(response.data.role[0]))
+            window.localStorage.setItem('photoUser', JSON.stringify(response.data.photoProfile))
             setToken(response.token)
             redirect(response.data.role[0])
             userLogin()
