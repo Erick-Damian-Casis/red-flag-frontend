@@ -6,13 +6,13 @@ import Product from "./pages/Product";
 import Profile from "./pages/Profile";
 import Auth from "./pages/Auth";
 import Navbar from "./components/navBar/Navbar";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import Option from "./pages/Option";
-import NavbarAdmin from "./components/navBar/NavbarAdmin";
 import Purchase from "./pages/Purchase";
 import User from "./pages/User";
 import Shop from "./pages/Shop";
-import {set} from "react-hook-form";
+import Sales from "./pages/Sale";
+import Chat from "./pages/Chat";
 
 
 function App() {
@@ -21,6 +21,7 @@ function App() {
     const userLogin=()=>{
         setIsLogged(!isLogged)
     }
+
 
   return (
     <div>
@@ -40,6 +41,8 @@ function App() {
                 <Route path='/purchases' element={<Purchase/>}/>
                 <Route path='/users' element={<User/>}/>
                 <Route path='/products' element={<Product/>}/>
+                <Route path='/sales' element={<Sales/>}/>
+                <Route path='/chats' element={<Chat/>}/>
             </RouteGroup>
         </BrowserRouter>
     </div>

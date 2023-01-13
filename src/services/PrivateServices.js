@@ -1,5 +1,5 @@
 import axios from "axios";
-const URL_PRODUCTS = 'http://127.0.0.1:8000/api/v1/private/products/';
+const URL_PRODUCTS = 'http://127.0.0.1:8000/api/v1/private/products';
 const URL_CATALOGUES = 'http://127.0.0.1:8000/api/v1/private/';
 const URL_CARS = 'http://127.0.0.1:8000/api/v1/private/cars/';
 const URL_SALES = 'http://127.0.0.1:8000/api/v1/private/sales';
@@ -26,8 +26,8 @@ export const getProduct =(id)=>{
     return request.then(response=>response.data)
 }
 
-export const getProducts =()=>{
-    const request = axios(`${URL_PRODUCTS}`,{
+export const getProducts =(gender)=>{
+    const request = axios(`${URL_PRODUCTS}-${gender}`,{
         headers:{
             Authorization: token
         }
@@ -45,7 +45,7 @@ export const createProduct =(data)=>{
 }
 
 export const updateProduct =(id, food)=>{
-    const request = axios.put(`${URL_PRODUCTS + id}`,food,{
+    const request = axios.put(`${URL_PRODUCTS + id}/`,food,{
         headers:{
             Authorization: token
         }
@@ -54,7 +54,7 @@ export const updateProduct =(id, food)=>{
 }
 
 export const destroyProduct =(id)=>{
-    const request =  axios.delete(URL_PRODUCTS+ id,{
+    const request =  axios.delete(`${URL_PRODUCTS}/`+ id,{
         headers:{
             Authorization: token
         }
