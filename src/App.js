@@ -12,7 +12,7 @@ import Purchase from "./pages/Purchase";
 import User from "./pages/User";
 import Shop from "./pages/Shop";
 import Sales from "./pages/Sale";
-import Chat from "./pages/Chat";
+import AdminChat from "./pages/AdminChat";
 
 
 function App() {
@@ -42,7 +42,7 @@ function App() {
                 <Route path='/users' element={<User/>}/>
                 <Route path='/products' element={<Product/>}/>
                 <Route path='/sales' element={<Sales/>}/>
-                <Route path='/chats' element={<Chat/>}/>
+                <Route path='/chats' element={<AdminChat/>}/>
             </RouteGroup>
         </BrowserRouter>
     </div>

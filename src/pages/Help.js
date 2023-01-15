@@ -3,10 +3,11 @@ import {useEffect, useState} from "react";
 import {BsMenuUp} from"react-icons/bs";
 import imageQuestion from "../assets/questionImage.jpg"
 import AccordionItem from "../components/help/AccordionItem";
+import {Link} from "react-router-dom";
 
 
 export default function Help(){
-    const [chatting, setChatting]=useState(false);
+
     const [open, setOpen]=useState(false);
 
 
@@ -30,9 +31,7 @@ export default function Help(){
             response: "v6.4 is our most exciting release yet with new data abstractions for reads, writes, and navigation hooks to easily keep your UI in sync with your data. The new feature overview will catch you up."
         }
         ]
-    const handleChangeChat=()=>{
-        setChatting(!chatting)
-    }
+
 
     return(
         <div>
@@ -71,10 +70,21 @@ export default function Help(){
                 </div>
             </div>
             <div className='fixed w-full'>
-                <button onClick={()=>handleChangeChat()} className='fixed bottom-0 left-0 bg-green-500 m-4 w-12 h-12 rounded-full'>
-                    <BsMenuUp className="m-auto text-white text-lg font-bold" ></BsMenuUp>
-                </button>
-                {chatting && <Chat></Chat>}
+                <Link to={'/chats'} >
+                    <button className='fixed bottom-0 left-0 bg-green-500 m-4 w-12 h-12 rounded-full'>
+                        <BsMenuUp className="m-auto text-white text-lg font-bold" ></BsMenuUp>
+                    </button>
+                    <div className='fixed bottom-7 left-20 rounded-full'>
+                        <div className="text-2xl mt-1 flex items-center pr-4">
+                            <span className="text-gray-700 mr-3">Live Chat</span>
+                        </div>
+                        <span className="absolute text-red-500 left-28 bottom-0">
+                           <svg width="20" height="20">
+                              <circle cx="8" cy="8" r="8" fill="currentColor"></circle>
+                           </svg>
+                        </span>
+                    </div>
+                </Link>
             </div>
         </div>
     )

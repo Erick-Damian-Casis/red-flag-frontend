@@ -3,7 +3,7 @@ const URL_PRODUCTS = 'http://127.0.0.1:8000/api/v1/private/products';
 const URL_CATALOGUES = 'http://127.0.0.1:8000/api/v1/private/';
 const URL_CARS = 'http://127.0.0.1:8000/api/v1/private/cars/';
 const URL_SALES = 'http://127.0.0.1:8000/api/v1/private/sales';
-const URL_USERS = 'http://127.0.0.1:8000/api/v1/private/users/';
+const URL_USERS = 'http://127.0.0.1:8000/api/v1/private/users';
 
 
 
@@ -18,7 +18,16 @@ export const setToken=(newToken)=>{
 ******************************************************************/
 
 export const getProduct =(id)=>{
-    const request = axios(`${URL_PRODUCTS + id}`,{
+    const request = axios(`${URL_PRODUCTS}/+${id}`,{
+        headers:{
+            Authorization: token
+        }
+    })
+    return request.then(response=>response.data)
+}
+
+export const getProductAll =()=>{
+    const request = axios(`${URL_PRODUCTS}`,{
         headers:{
             Authorization: token
         }
@@ -203,8 +212,8 @@ export const destroySale =(id)=>{
  ***************         SERVICE USER        *******************
  *****************************************************************/
 
-export const getUser =(id)=>{
-    const request = axios(`${URL_USERS + id}`,{
+export const getUser =()=>{
+    const request = axios(`${URL_USERS}-profile`,{
         headers:{
             Authorization: token
         }
@@ -213,7 +222,7 @@ export const getUser =(id)=>{
 }
 
 export const getUsers =()=>{
-    const request = axios(`${URL_USERS}`,{
+    const request = axios(`${URL_USERS}/`,{
         headers:{
             Authorization: token
         }
@@ -222,7 +231,7 @@ export const getUsers =()=>{
 }
 
 export const updateUser =(id, food)=>{
-    const request = axios.put(`${URL_USERS + id}`,food,{
+    const request = axios.put(`${URL_USERS}/${id}`,food,{
         headers:{
             Authorization: token
         }
@@ -231,7 +240,7 @@ export const updateUser =(id, food)=>{
 }
 
 export const destroyUser =(id)=>{
-    const request =  axios.delete(URL_USERS+ id,{
+    const request =  axios.delete(`${URL_USERS}/${id}`,{
         headers:{
             Authorization: token
         }

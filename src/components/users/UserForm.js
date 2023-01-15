@@ -1,9 +1,36 @@
-import hombre from "../../assets/hombre.jpg";
 import {useForm} from "react-hook-form";
 import {registerUser} from "../../services/AuthService";
+import {useEffect, useState} from "react";
+import {getUser} from "../../services/PrivateServices";
 
 export default function UserForm(){
-    const { register, handleSubmit, formState:{errors} }=useForm();
+    const [currentUser, setCurrentUser]= useState({
+        name: '',
+        email: '',
+        address: '',
+        phone: '',
+        photoProfile: '',
+
+    })
+    const { register, handleSubmit, formState:{errors}, setValue }=useForm({
+        defaultValues:{
+            currentUser
+        }
+    }
+    );
+    /*
+    *   setValue('name',currentUser?.name)
+        setValue('email',currentUser?.email)
+        setValue('address',currentUser?.address)
+        setValue('phone',currentUser?.phone)
+        setValue('photoProfile',currentUser?.photoProfile)
+    * */
+
+    useEffect(()=>{
+        getUser().then(response=>{
+            setCurrentUser(response.data)
+        })
+    },[])
 
     const onSubmit=(data)=>{
         registerUser(data).then(response=>{
@@ -15,7 +42,7 @@ export default function UserForm(){
         <div className="w-full h-screen p-8">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex h-24 w-24 overflow-hidden m-auto rounded-full">
-                    <img className="w-full h-full object-cover object-left-top" src={hombre} alt=""/>
+                    <img className="w-full h-full object-cover object-left-top" src={`http://127.0.0.1:8000${currentUser.photoProfile}`} alt=""/>
                 </div>
                 <div className="flex flex-col items-center overflow-hidden m-auto pt-16">
                             <div className="w-1/2 transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-red-500">

@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import FormProduct from "./FormProduct";
 import TableProduct from "./TableProduct";
-import {destroyProduct, getProducts} from "../../services/PrivateServices";
+import {destroyProduct, getProductAll} from "../../services/PrivateServices";
 
 export default function ListProduct(){
     const [isOpen,setIsOpen]=useState(false)
@@ -12,7 +12,7 @@ export default function ListProduct(){
     }
 
     useEffect(()=>{
-        getProducts().then(response=>{
+        getProductAll().then(response=>{
             setProducts(response.data)
             console.log(response.data)
         })

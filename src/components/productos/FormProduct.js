@@ -73,6 +73,7 @@ export default function FormProduct({closeModal,addProduct}){
                     <div className="w-full mb-0">
                         <select className="w-full py-4 px-0 bg-azul text-orange-600 placeholder:font-semibold rounded hover:ring-1 outline-orange-600"
                                 {...register("category.id")}>
+                            <option value="">Categoria</option>
                             {categories.length
                                 && categories.map(value => {
                                     return (
@@ -86,6 +87,7 @@ export default function FormProduct({closeModal,addProduct}){
                     <div className="w-full mb-0">
                         <select className="w-full py-4 px-0 bg-azul text-orange-600 placeholder:font-semibold rounded hover:ring-1 outline-orange-600"
                                 {...register("gender.id")}>
+                            <option value="">Genero</option>
                             {genders.length
                                 && genders.map(value => {
                                     return (
