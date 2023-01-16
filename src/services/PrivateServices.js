@@ -13,6 +13,16 @@ export const setToken=(newToken)=>{
     token = `Bearer ${newToken}`
 }
 
+
+export const createMessage = async (message) =>{
+    const { data } = await axios.post('http://127.0.0.1:8000/api/v1/private/messages', message,{
+        headers:{
+            Authorization: token
+        }
+    })
+    return data
+}
+
 /*****************************************************************
 ***************         SERVICE PRODUCTS           *******************
 ******************************************************************/

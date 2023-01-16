@@ -2,7 +2,7 @@ export default function CarList({car,deleteCar}){
 
 
     return(
-        <div className="m-auto p-2 text-azul">
+        <div className="m-auto w-2/3 p-2 text-azul">
             <div
                 className="flex flex-row space-y-2 items-center justify-center h-full p-4 bg-orange-600 rounded-xl space-x-10">
                 <div className="w-1/6">
@@ -14,7 +14,7 @@ export default function CarList({car,deleteCar}){
                         {car.product?.description}
                     </p>
                 </div>
-                <div className="flex flex-col space-y-2  w-1/6">
+                <div className="flex flex-col space-y-2  w-2/6">
                     <p className="w-1/6 text-2xl font-semibold">${car.product?.priceDiscount}</p>
                     <div className="bg-azul rounded-lg px-4 text-center">
                         <button onClick={()=>deleteCar(car.id)} className='text-sm font-medium leading-normal text-center py-2 text-white'>
