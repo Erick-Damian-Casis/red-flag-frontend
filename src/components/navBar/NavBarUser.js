@@ -1,11 +1,7 @@
 import {BsFillCartFill} from "react-icons/bs";
 import { Link } from "react-router-dom";
-import OptionProfile from "./OptionProfile";
-import {useState} from "react";
 
 export default function NavBarUser({openOption, photo}){
-
-
 
     const itemsNav= [{
         item: 'Inicio',
@@ -29,7 +25,7 @@ export default function NavBarUser({openOption, photo}){
                                 <BsFillCartFill className='text-2xl text-orange-500 hover:opacity-25'></BsFillCartFill>
                             </Link>
                         </li>
-                        <li className='w-12' onClick={()=>openOption()}>
+                        <li className='w-12 h-12' onClick={()=>openOption()}>
                             <img className="w-full h-full object-cover object-center rounded-full" src={photo} alt=""/>
                         </li>
                     </ul>

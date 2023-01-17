@@ -6,9 +6,9 @@ import {useForm} from "react-hook-form";
 export default function Chat(){
     const [messages, setMessages]=useState([]);
     const {register, handleSubmit}=useForm();
-    let allMessages = [];
 
     useEffect(()=>{
+        let allMessages = [];
         Pusher.logToConsole = true;
         const pusher = new Pusher('2f4231fddb5780bc5c2a', {
             cluster: 'us2'
@@ -22,7 +22,6 @@ export default function Chat(){
     },[])
 
     const onSubmit = async (data)=>{
-        console.log(messages)
         const messageCreate = await createMessage(data)
         console.log(messageCreate)
     }
@@ -50,8 +49,9 @@ return(
                     <div key={index} className="chat-message">
                         <div className="flex items-end">
                             <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
-                                <div><span
-                                    className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">{value.message}</span>
+                                <div className='flex flex-col'>
+                                    <span className='px-2 text-gray-500'>{value.user}</span>
+                                    <span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">{value.message}</span>
                                 </div>
                             </div>
                             <img
