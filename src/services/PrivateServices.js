@@ -4,6 +4,7 @@ const URL_CATALOGUES = 'http://127.0.0.1:8000/api/v1/private/';
 const URL_CARS = 'http://127.0.0.1:8000/api/v1/private/cars/';
 const URL_SALES = 'http://127.0.0.1:8000/api/v1/private/sales';
 const URL_USERS = 'http://127.0.0.1:8000/api/v1/private/users';
+const URL_WISHES = 'http://127.0.0.1:8000/api/v1/private/favorites';
 
 
 
@@ -173,15 +174,6 @@ export const destroyCar =(id)=>{
  ***************         SERVICE SALE        *******************
  *****************************************************************/
 
-export const getSale =(id)=>{
-    const request = axios(`${URL_SALES + id}`,{
-        headers:{
-            Authorization: token
-        }
-    })
-    return request.then(response=>response.data)
-}
-
 export const getSales =()=>{
     const request = axios(`${URL_SALES}`,{
         headers:{
@@ -190,9 +182,8 @@ export const getSales =()=>{
     })
     return request.then(response=>response.data)
 }
-
-export const createSale =(data)=>{
-    const request = axios.post(`${URL_SALES}`, data,{
+export const getSalesByUser =()=>{
+    const request = axios(`${URL_SALES}-user`,{
         headers:{
             Authorization: token
         }
@@ -200,17 +191,8 @@ export const createSale =(data)=>{
     return request.then(response=>response.data)
 }
 
-export const updateSale =(id, food)=>{
-    const request = axios.put(`${URL_SALES + id}`,food,{
-        headers:{
-            Authorization: token
-        }
-    })
-    return request.then(response=>response.data)
-}
-
-export const destroySale =(id)=>{
-    const request =  axios.delete(URL_SALES+ id,{
+export const createSale =()=>{
+    const request = axios(`${URL_CARS}`,{
         headers:{
             Authorization: token
         }
@@ -240,8 +222,8 @@ export const getUsers =()=>{
     return request.then(response=>response.data)
 }
 
-export const updateUser =(id, food)=>{
-    const request = axios.put(`${URL_USERS}/${id}`,food,{
+export const updateUser =(food)=>{
+    const request = axios.put(`${URL_USERS}-update`,food,{
         headers:{
             Authorization: token
         }
@@ -257,6 +239,47 @@ export const destroyUser =(id)=>{
     })
     return request.then(response=>response.data)
 }
+
+/*****************************************************************
+ ***************         SERVICE WISHES        *******************
+ *****************************************************************/
+
+export const getWish =(id)=>{
+    const request = axios(`${URL_WISHES}/${id}`,{
+        headers:{
+            Authorization: token
+        }
+    })
+    return request.then(response=>response.data)
+}
+
+export const getWishes =()=>{
+    const request = axios(`${URL_WISHES}`,{
+        headers:{
+            Authorization: token
+        }
+    })
+    return request.then(response=>response.data)
+}
+
+export const createWish =(data)=>{
+    const request = axios.post(`${URL_WISHES}`, data,{
+        headers:{
+            Authorization: token
+        }
+    })
+    return request.then(response=>response.data)
+}
+
+export const destroyWish =(id)=>{
+    const request =  axios.delete(`${URL_WISHES}/${id}`,{
+        headers:{
+            Authorization: token
+        }
+    })
+    return request.then(response=>response.data)
+}
+
 
 /*****************************************************************
  ***************         LOGOUT        *******************

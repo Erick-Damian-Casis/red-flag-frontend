@@ -23,6 +23,7 @@ export default function FormProduct({closeModal,addProduct}){
     },[])
 
     const onSubmit=(data)=>{
+        console.log(data)
         const categoryId = parseFloat(data.category.id)
         const genderId = parseFloat(data.gender.id)
         const formData = new FormData();
@@ -36,8 +37,8 @@ export default function FormProduct({closeModal,addProduct}){
         formData.append('state', data.state);
         formData.append('image', data.image[0]);
 
-        console.log(formData)
         createProduct(formData).then(response=>{
+            console.log(response.data)
             addProduct(response.data)
             closeModal();
         })
@@ -175,7 +176,7 @@ export default function FormProduct({closeModal,addProduct}){
                            id="floating_description"
                            className="block py-2 px-2 w-full text-sm text-gray-900 bg-transparent border-2 border-azul appearance-none focus:border-orange-600 focus:outline-none focus:ring-0 peer"
                            placeholder=" "
-                           {...register('name',{
+                           {...register('description',{
                                required: true
                            })}
                     />

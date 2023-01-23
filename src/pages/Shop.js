@@ -1,15 +1,17 @@
 import ProductCard from "../components/productos/ProductCard";
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {createCar, getProducts, setToken} from "../services/PrivateServices";
+import {createCar, createWish, getProducts, setToken} from "../services/PrivateServices";
 import FormCar from "../components/car/FormCar";
-import {useForm} from "react-hook-form";
+import {successAddCar} from "../alerts";
 
 export default function Shop(){
     let {gender}=useParams()
-    const [products,setProducts]=useState([]);
     const [carId,setCarId]=useState(null);
     const [isOpen,setIsOpen]=useState(false);
+    const [shirts,setShirts]=useState([]);
+    const [pants,setPants]=useState([]);
+    const [coats,setCoats]=useState([]);
 
 
     const handleFormModal=(carId)=>{
@@ -25,6 +27,7 @@ export default function Shop(){
             size: 10,}
         createCar(productBuy).then(response=>{
             console.log(response)
+            successAddCar()
         })
     }
 
@@ -33,15 +36,31 @@ export default function Shop(){
         const loggedUser = window.localStorage?.getItem('loggedUser')
         setToken(JSON.parse(loggedUser))
         getProducts(gender).then(response=>{
-            setProducts(response.data)
+            const products = response.data
+            setShirts(products.filter(value=>value.category?.name === 'CAMISA'))
+            setPants(products.filter(value=>value.category?.name === 'PANTALON'))
+            setCoats(products.filter(value=>value.category?.name === 'ABRIGO'))
         })
     },[gender])
+
+    const addWishes=(product)=>{
+        const formData = new FormData();
+        formData.append('product', product);
+
+        createWish(formData).then(response=>{
+            console.log(response)
+        })
+    }
 
 
     return(
         <div>
-            <ProductCard handleFastBuy={handleFastBuy} products={products} handleFormModal={handleFormModal}></ProductCard>
+            <ProductCard title={'CAMISA'} addWishes={addWishes} handleFastBuy={handleFastBuy} products={shirts} handleFormModal={handleFormModal}></ProductCard>
+            <ProductCard title={'PANTALON'} addWishes={addWishes}  handleFastBuy={handleFastBuy} products={pants} handleFormModal={handleFormModal}></ProductCard>
+            <ProductCard title={'ABRIGO'} addWishes={addWishes}   handleFastBuy={handleFastBuy} products={coats} handleFormModal={handleFormModal}></ProductCard>
+
             {isOpen && <FormCar carId={carId} closeModal={handleFormModal}/>}
+
         </div>
     )
 }

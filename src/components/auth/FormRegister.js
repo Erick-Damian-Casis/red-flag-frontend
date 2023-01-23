@@ -1,6 +1,7 @@
 import {useForm} from "react-hook-form";
 import {registerUser} from "../../services/AuthService";
 import { BsFillCameraFill } from "react-icons/bs";
+import {successRegister} from "../../alerts";
 
 export default function FormRegister({handleIsLogin, isLogin}){
     const { register, handleSubmit, formState:{errors} }=useForm();
@@ -17,6 +18,7 @@ export default function FormRegister({handleIsLogin, isLogin}){
         registerUser(formData).then(response=>{
             console.log(response)
             isLogin()
+            successRegister()
         })
     }
 
@@ -81,7 +83,7 @@ export default function FormRegister({handleIsLogin, isLogin}){
                                 {...register('password',{
                                     required: true
                                 })}
-                                type="text"
+                                type="password"
                                 placeholder="Contraseña"
                                 className="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none"
                             />
@@ -92,7 +94,7 @@ export default function FormRegister({handleIsLogin, isLogin}){
                                 {...register('passwordR',{
                                     required: true
                                 })}
-                                type="text"
+                                type="password"
                                 placeholder="Repetir contraseña"
                                 className="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none"
                             />
@@ -120,7 +122,8 @@ export default function FormRegister({handleIsLogin, isLogin}){
                         </button>
                     </div>
                     <div className="mt-6 text-center">
-                        <span onClick={()=>handleIsLogin()} className="underline cursor-default hover:text-red-600">Regístrese para obtener una cuenta
+                        <span onClick={()=>handleIsLogin()} className="hover:underline cursor-pointer hover:text-red-600">
+                            ¿Ya tienes una cuenta? Inicia sesión
                     </span>
                     </div>
                 </form>

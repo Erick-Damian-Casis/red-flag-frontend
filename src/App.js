@@ -13,6 +13,7 @@ import User from "./pages/User";
 import Shop from "./pages/Shop";
 import Sales from "./pages/Sale";
 import AdminChat from "./pages/AdminChat";
+import Wishes from "./pages/Wishes";
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
                 <Route path='/products' element={<Product/>}/>
                 <Route path='/sales' element={<Sales/>}/>
                 <Route path='/chats' element={<AdminChat/>}/>
+                <Route path='/wishes' element={<Wishes/>}/>
             </RouteGroup>
         </BrowserRouter>
     </div>

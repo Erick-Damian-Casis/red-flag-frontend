@@ -48,7 +48,7 @@ export default function FormLogin({handleIsLogin, userLogin}){
                             {...register('password',{
                                 required: true
                             })}
-                            type="text"
+                            type="password"
                             placeholder="Contraseña"
                             className="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none"
                         />
@@ -60,7 +60,7 @@ export default function FormLogin({handleIsLogin, userLogin}){
                         </button>
                     </div>
                     <div className="mt-6 text-center">
-                        <span onClick={()=>handleIsLogin()} className="underline cursor-default hover:text-red-600">Regístrese para obtener una cuenta
+                        <span onClick={()=>handleIsLogin()} className="hover:underline cursor-pointer hover:text-red-600">Regístrese para obtener una cuenta
                     </span>
                     </div>
                 </form>

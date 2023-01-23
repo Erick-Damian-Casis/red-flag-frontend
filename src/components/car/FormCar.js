@@ -2,6 +2,7 @@ import {AiOutlineClose} from "react-icons/ai";
 import {useForm} from "react-hook-form";
 import {useEffect, useState} from "react";
 import {createCar, getProduct} from "../../services/PrivateServices";
+import {successAddCar} from "../../alerts";
 
 export default function FormCar({closeModal, carId}) {
     const [product, setProduct] = useState({})
@@ -24,6 +25,8 @@ export default function FormCar({closeModal, carId}) {
     const onSubmit = (data) => {
         createCar(data).then(response=>{
             console.log(response)
+            successAddCar()
+            closeModal()
         })
     }
     return (

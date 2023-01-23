@@ -1,6 +1,7 @@
 import CarList from "../components/car/CarList";
 import {useEffect, useState} from "react";
 import {destroyCar, getCars} from "../services/PrivateServices";
+import FormSale from "../components/sale/FormSale";
 
 export default function Car(){
     const [cars, setCars] = useState([])
@@ -20,12 +21,16 @@ export default function Car(){
     }
 
     return(
-        <div className='flex flex-col justify-center'>
-            {cars?.map(value => {
-                return(<CarList key={value.id} car={value} deleteCar={deleteCar}/>)
-                }
-            )}
-
+        <div className='flex w-full'>
+            <div className='w-2/3'>
+                {cars?.map(value => {
+                        return(<CarList key={value.id} car={value} deleteCar={deleteCar}/>)
+                    }
+                )}
+            </div>
+            <div className="w-1/3 h-screen ml-10 max-w-7xl shadow-lg rounded-sm border border-gray-200">
+                <FormSale cars={cars}/>
+            </div>
         </div>
     )
 }
