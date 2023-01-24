@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import {createCar, createWish, getProducts, setToken} from "../services/PrivateServices";
 import FormCar from "../components/car/FormCar";
 import {successAddCar} from "../alerts";
+import CarouselComponent from '../components/CarouselComponent'
 
 export default function Shop(){
     let {gender}=useParams()
@@ -54,7 +55,8 @@ export default function Shop(){
 
 
     return(
-        <div>
+        <div className='h-screen'>
+            <CarouselComponent/>
             <ProductCard title={'CAMISA'} addWishes={addWishes} handleFastBuy={handleFastBuy} products={shirts} handleFormModal={handleFormModal}></ProductCard>
             <ProductCard title={'PANTALON'} addWishes={addWishes}  handleFastBuy={handleFastBuy} products={pants} handleFormModal={handleFormModal}></ProductCard>
             <ProductCard title={'ABRIGO'} addWishes={addWishes}   handleFastBuy={handleFastBuy} products={coats} handleFormModal={handleFormModal}></ProductCard>
