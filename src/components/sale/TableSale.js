@@ -1,6 +1,6 @@
 import { BsDownload } from "react-icons/bs";
 
-export default function TableSale({sales}){
+export default function TableSale({sales, saleFile}){
     return(
         <table className="table-auto w-full">
             <thead className="font-semibold uppercase text-gray-400 bg-gray-50">
@@ -48,7 +48,7 @@ export default function TableSale({sales}){
 
                         <td className="text-lg text-center">
                             <button
-                                onClick={()=>console.log(value.id)}
+                                onClick={()=>saleFile(value.id)}
                                 className="bg-blue-500 hover:bg-blue-700 mx-2 text-white font-bold py-1 px-2 border border-blue-500 rounded text-2xl">
                                 <BsDownload/>
                             </button>

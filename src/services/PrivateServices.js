@@ -174,6 +174,22 @@ export const destroyCar =(id)=>{
  ***************         SERVICE SALE        *******************
  *****************************************************************/
 
+export const downloadSales =(id)=>{
+    return axios(`http://127.0.0.1:8000/api/v1/private/download-sales/${id}`,{
+        responseType: 'blob',
+    }).then(response=>{
+        const url = window.URL.createObjectURL(new Blob([response.data]))
+        const link = document.createElement('a')
+        link.href= url
+        link.setAttribute('download','factura.pdf')
+        document.body.appendChild(link)
+        link.click();
+    }).catch(error=>{
+        console.log(error);
+    })
+}
+
+//************************************
 export const getSales =()=>{
     const request = axios(`${URL_SALES}`,{
         headers:{
@@ -192,7 +208,7 @@ export const getSalesByUser =()=>{
 }
 
 export const createSale =()=>{
-    const request = axios(`${URL_CARS}`,{
+    const request = axios(`${URL_SALES}-create`,{
         headers:{
             Authorization: token
         }
