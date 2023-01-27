@@ -229,6 +229,24 @@ export const getUser =()=>{
     return request.then(response=>response.data)
 }
 
+export const putUserRoleAdmin =(user)=>{
+    const request = axios.put(`${URL_USERS}-admin/${user}`,{
+        headers:{
+            Authorization: token
+        }
+    })
+    return request.then(response=>response.data)
+}
+
+export const putUserRoleClient =(user)=>{
+    const request = axios.put(`${URL_USERS}-client/${user}`,{
+        headers:{
+            Authorization: token
+        }
+    })
+    return request.then(response=>response.data)
+}
+
 export const getUsers =()=>{
     const request = axios(`${URL_USERS}/`,{
         headers:{
@@ -238,8 +256,8 @@ export const getUsers =()=>{
     return request.then(response=>response.data)
 }
 
-export const updateUser =(food)=>{
-    const request = axios.put(`${URL_USERS}-update`,food,{
+export const updateUser =(user)=>{
+    const request = axios.put(`${URL_USERS}-update`,user,{
         headers:{
             Authorization: token
         }

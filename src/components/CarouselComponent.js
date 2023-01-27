@@ -3,23 +3,23 @@ import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import { RxDotFilled } from 'react-icons/rx';
 
 
-export default function CarouselComponent() {
+export default function CarouselComponent({products}) {
     const slides = [
         {
-            url: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2620&q=80',
+            url: 'https://www.instyle.es/medio/2019/02/04/pantalones-cropped_d62cd3c5_1200x630.jpg',
         },
         {
-            url: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80',
+            url: 'https://s7d2.scene7.com/is/image/aeo/20230119-m-shirtsandflannels-lg?scl=1&qlt=60&fmt=jpeg',
         },
         {
-            url: 'https://images.unsplash.com/photo-1661961112951-f2bfd1f253ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2672&q=80',
+            url: 'https://i.ytimg.com/vi/SY7InzAHgRk/maxresdefault.jpg',
         },
 
         {
-            url: 'https://images.unsplash.com/photo-1512756290469-ec264b7fbf87?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2253&q=80',
+            url: 'https://imagenes.elpais.com/resizer/mLznFiIp2ErtEt134-GdB_K7v1k=/1960x1103/cloudfront-eu-central-1.images.arcpublishing.com/prisa/F5F2KG2RTVARWZ3L6VUQFED47E.jpg',
         },
         {
-            url: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2671&q=80',
+            url: 'https://i.ytimg.com/vi/JAFkEgWfwLA/maxresdefault.jpg',
         },
     ];
 

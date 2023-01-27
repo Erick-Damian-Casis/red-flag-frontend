@@ -29,3 +29,13 @@ export const successSale=()=>{
         timer: 1500
     })
 }
+
+export const successRole=()=>{
+    return Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'El rol a sido cambiado',
+        showConfirmButton: false,
+        timer: 1500
+    })
+}

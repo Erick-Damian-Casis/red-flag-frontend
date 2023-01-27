@@ -1,5 +1,4 @@
 import { HiOutlineTrash } from "react-icons/hi";
-import { BsEye } from "react-icons/bs";
 
 export default function TableProduct({products, deleteProduct,}){
     return(
@@ -39,11 +38,6 @@ export default function TableProduct({products, deleteProduct,}){
                                     onClick={()=>deleteProduct(value.id)}
                                     className="bg-red-500 hover:bg-red-700 mx-2 text-white font-bold py-1 px-2 border border-red-500 rounded text-2xl">
                                     <HiOutlineTrash/>
-                                </button>
-                                <button
-                                    onClick={()=>console.log(value.id)}
-                                    className="bg-blue-500 hover:bg-blue-700 mx-2 text-white font-bold py-1 px-2 border border-blue-500 rounded text-2xl">
-                                    <BsEye/>
                                 </button>
                             </td>
                         </tr>

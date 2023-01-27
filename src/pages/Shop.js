@@ -13,6 +13,7 @@ export default function Shop(){
     const [shirts,setShirts]=useState([]);
     const [pants,setPants]=useState([]);
     const [coats,setCoats]=useState([]);
+    const [products,setProducts]=useState([]);
 
 
     const handleFormModal=(carId)=>{
@@ -56,7 +57,7 @@ export default function Shop(){
 
     return(
         <div className='h-screen'>
-            <CarouselComponent/>
+            <CarouselComponent products={products}/>
             <ProductCard title={'CAMISA'} addWishes={addWishes} handleFastBuy={handleFastBuy} products={shirts} handleFormModal={handleFormModal}></ProductCard>
             <ProductCard title={'PANTALON'} addWishes={addWishes}  handleFastBuy={handleFastBuy} products={pants} handleFormModal={handleFormModal}></ProductCard>
             <ProductCard title={'ABRIGO'} addWishes={addWishes}   handleFastBuy={handleFastBuy} products={coats} handleFormModal={handleFormModal}></ProductCard>
