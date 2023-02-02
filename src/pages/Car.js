@@ -1,9 +1,10 @@
 import CarList from "../components/car/CarList";
 import {useEffect, useState} from "react";
-import {destroyCar, getCars} from "../services/PrivateServices";
+import {destroyCar, getCars, setToken} from "../services/PrivateServices";
 import FormSale from "../components/sale/FormSale";
 
 export default function Car(){
+
     const [cars, setCars] = useState([])
 
     useEffect(()=>{
@@ -11,6 +12,11 @@ export default function Car(){
             setCars(response.data)
         })
 
+    },[])
+
+    useEffect(()=>{
+        const loggedUser = window.localStorage?.getItem('loggedUser')
+        setToken(JSON.parse(loggedUser))
     },[])
 
     const deleteCar=(carId)=>{

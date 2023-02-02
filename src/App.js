@@ -6,7 +6,7 @@ import Product from "./pages/Product";
 import Profile from "./pages/Profile";
 import Auth from "./pages/Auth";
 import Navbar from "./components/navBar/Navbar";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Option from "./pages/Option";
 import Purchase from "./pages/Purchase";
 import User from "./pages/User";
@@ -14,15 +14,27 @@ import Shop from "./pages/Shop";
 import Sales from "./pages/Sale";
 import AdminChat from "./pages/AdminChat";
 import Wishes from "./pages/Wishes";
+import {setToken} from "./services/PrivateServices";
 
 
 function App() {
     const [isLogged, setIsLogged]=useState(false)
 
+    useEffect(()=>{
+        let loggedUser = window.localStorage?.getItem('loggedUser')
+        loggedUser= JSON.parse(loggedUser)
+        console.log(loggedUser)
+        if(loggedUser!==null){
+            setIsLogged(true)
+
+        }else{
+            setIsLogged(false)
+        }
+    },[])
+
     const userLogin=()=>{
         setIsLogged(!isLogged)
     }
-
 
   return (
     <div>

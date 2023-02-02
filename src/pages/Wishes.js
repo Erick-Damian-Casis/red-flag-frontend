@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {destroyWish, getWishes} from "../services/PrivateServices";
+import {destroyWish, getProducts, getWishes, setToken} from "../services/PrivateServices";
 import WishCard from "../components/Wishes/WishCard";
 
 export default function Wishes(){
@@ -18,6 +18,11 @@ export default function Wishes(){
             }
         )
     }
+
+    useEffect(()=>{
+        const loggedUser = window.localStorage?.getItem('loggedUser')
+        setToken(JSON.parse(loggedUser))
+    },[])
 
     return (
         <div>

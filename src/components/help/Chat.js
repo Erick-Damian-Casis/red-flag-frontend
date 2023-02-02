@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import Pusher from "pusher-js";
 import {createMessage} from "../../services/PrivateServices";
 import {useForm} from "react-hook-form";
+import { BiMessageAltError } from "react-icons/bi";
 
 export default function Chat(){
     const [messages, setMessages]=useState([]);
@@ -44,23 +45,30 @@ return(
         </div>
         <div id="messages"
              className="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
-            {messages.map((value, index)=>{
-                return(
-                    <div key={index} className="chat-message">
-                        <div className="flex items-end">
-                            <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
-                                <div className='flex flex-col'>
-                                    <span className='px-2 text-gray-500'>{value.user}</span>
-                                    <span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">{value.message}</span>
+            {messages.length > 0
+                ? (messages.map((value, index)=>{
+                    return(
+                        <div key={index} className="chat-message">
+                            <div className="flex items-end">
+                                <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
+                                    <div className='flex flex-col'>
+                                        <span className='px-2 text-gray-500'>{value.user}</span>
+                                        <span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">{value.message}</span>
+                                    </div>
                                 </div>
+                                <img
+                                    src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144"
+                                    alt="My profile" className="w-6 h-6 rounded-full order-1"/>
                             </div>
-                            <img
-                                src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144"
-                                alt="My profile" className="w-6 h-6 rounded-full order-1"/>
                         </div>
+                    )
+                }))
+                :( <div className="flex flex-col items-center m-auto opacity-50 cursor-default" >
+                        <BiMessageAltError className='text-3xl'/>
+                        <p>Escribe en la parte inferior tu duda</p>
                     </div>
                 )
-            })}
+            }
         </div>
         <div className="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
             <form onSubmit={handleSubmit(onSubmit)}>

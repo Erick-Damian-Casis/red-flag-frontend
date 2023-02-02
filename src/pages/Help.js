@@ -1,15 +1,19 @@
-import Chat from "../components/help/Chat";
 import {useEffect, useState} from "react";
 import {BsMenuUp} from"react-icons/bs";
 import imageQuestion from "../assets/questionImage.jpg"
 import AccordionItem from "../components/help/AccordionItem";
 import {Link} from "react-router-dom";
+import {setToken} from "../services/PrivateServices";
 
 
 export default function Help(){
 
     const [open, setOpen]=useState(false);
 
+    useEffect(()=>{
+        const loggedUser = window.localStorage?.getItem('loggedUser')
+        setToken(JSON.parse(loggedUser))
+    },[])
 
     const toggle=(index)=>{
         if (open===index){
