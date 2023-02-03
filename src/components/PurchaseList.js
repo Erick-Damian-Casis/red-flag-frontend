@@ -8,6 +8,7 @@ export default function PurchaseList(){
     useEffect(()=>{
         getSalesByUser().then(response=>{
             setPurchases(response.data)
+            console.log(response.data)
         })
     },[])
 

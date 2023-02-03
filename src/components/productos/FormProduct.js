@@ -38,7 +38,6 @@ export default function FormProduct({closeModal,addProduct}){
         formData.append('image', data.image[0]);
 
         createProduct(formData).then(response=>{
-            console.log(response.data)
             addProduct(response.data)
             closeModal();
         })

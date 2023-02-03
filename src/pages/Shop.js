@@ -5,6 +5,7 @@ import {createCar, createWish, getProducts, setToken} from "../services/PrivateS
 import FormCar from "../components/car/FormCar";
 import {successAddCar} from "../alerts";
 import CarouselComponent from '../components/CarouselComponent'
+import Footer from "../components/Footer";
 
 export default function Shop(){
     let {gender}=useParams()
@@ -56,14 +57,14 @@ export default function Shop(){
 
 
     return(
-        <div className='h-screen'>
+        <div className=''>
             <CarouselComponent products={products}/>
             <ProductCard title={'CAMISA'} addWishes={addWishes} handleFastBuy={handleFastBuy} products={shirts} handleFormModal={handleFormModal}></ProductCard>
             <ProductCard title={'PANTALON'} addWishes={addWishes}  handleFastBuy={handleFastBuy} products={pants} handleFormModal={handleFormModal}></ProductCard>
             <ProductCard title={'ABRIGO'} addWishes={addWishes}   handleFastBuy={handleFastBuy} products={coats} handleFormModal={handleFormModal}></ProductCard>
 
             {isOpen && <FormCar carId={carId} closeModal={handleFormModal}/>}
-
+            <Footer/>
         </div>
     )
 }

@@ -1,6 +1,5 @@
 export default function CarList({car,deleteCar}){
 
-    console.log(car.product.description)
     return(
         <div className="m-auto w-full p-2 text-azul">
             <div

@@ -11,7 +11,6 @@ export default function Car(){
         getCars().then(response=>{
             setCars(response.data)
         })
-
     },[])
 
     useEffect(()=>{

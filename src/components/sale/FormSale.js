@@ -21,7 +21,7 @@ export default function FormSale({cars}){
         priceTotal = carTotal.reduce((accumulator, current)=> accumulator + current)
         priceDiscountTotal = carDiscountTotal.reduce((accumulator, current)=> accumulator + current)
         iva= priceDiscountTotal * 0.12
-        total= priceDiscountTotal+ iva
+        total= priceDiscountTotal + iva
     }
 
     const makePayment=()=>{

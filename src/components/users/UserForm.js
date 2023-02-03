@@ -5,15 +5,17 @@ import {getUser, updateUser} from "../../services/PrivateServices";
 
 export default function UserForm(){
 
+    const [photoUser, setPhotoUser]= useState('')
     const { register, handleSubmit, formState:{errors}, setValue }=useForm();
 
     useEffect(()=>{
         getUser().then(response=>{
+            console.log(response.data)
             setValue('name',response.data?.name)
             setValue('email',response.data?.email)
             setValue('address',response.data?.address)
             setValue('phone',response.data?.phone)
-            setValue('photoProfile',response.data?.photoProfile)
+            setPhotoUser(response.data?.photoProfile)
         })
     },[setValue])
 
@@ -27,7 +29,7 @@ export default function UserForm(){
         <div className="w-full h-screen p-8">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex h-24 w-24 overflow-hidden m-auto rounded-full">
-                    <img className="w-full h-full object-cover object-left-top" src={`http://127.0.0.1:8000`} alt=""/>
+                    <img className="w-full h-full object-cover object-left-top" src={`http://127.0.0.1:8000${photoUser}`} alt=""/>
                 </div>
                 <div className="flex flex-col items-center overflow-hidden m-auto pt-16">
                             <div className="w-1/2 transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-red-500">
