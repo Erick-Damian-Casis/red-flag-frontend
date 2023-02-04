@@ -2,6 +2,7 @@ import {useForm} from "react-hook-form";
 import {registerUser} from "../../services/AuthService";
 import {useEffect, useState} from "react";
 import {getUser, updateUser} from "../../services/PrivateServices";
+import {successProfile} from "../../alerts";
 
 export default function UserForm(){
 
@@ -22,6 +23,7 @@ export default function UserForm(){
     const onSubmit=(data)=>{
         updateUser(data).then(response=>{
             console.log(response)
+            successProfile()
         })
     }
 

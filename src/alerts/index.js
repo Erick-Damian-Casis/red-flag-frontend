@@ -39,3 +39,13 @@ export const successRole=()=>{
         timer: 1500
     })
 }
+
+export const successProfile=()=>{
+    return Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Perfil Actualizado',
+        showConfirmButton: false,
+        timer: 1500
+    })
+}
