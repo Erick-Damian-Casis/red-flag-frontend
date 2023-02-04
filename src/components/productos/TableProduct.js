@@ -15,6 +15,9 @@ export default function TableProduct({products, deleteProduct,}){
                     <div className="font-semibold text-center">DESCUENTO</div>
                 </th>
                 <th className="p-2 whitespace-nowrap">
+                    <div className="font-semibold text-center">DISPONIBLE</div>
+                </th>
+                <th className="p-2 whitespace-nowrap">
                     <div className="font-semibold text-center">OPCIONES</div>
                 </th>
             </tr>
@@ -32,6 +35,9 @@ export default function TableProduct({products, deleteProduct,}){
                             </td>
                             <td className="p-2 whitespace-nowrap">
                                 <div className="text-lg text-center">{`${value.discount} %`}</div>
+                            </td>
+                            <td className="p-2 whitespace-nowrap">
+                                <div className="text-lg text-center">{value.stock}</div>
                             </td>
                             <td className="text-lg text-center">
                                 <button
