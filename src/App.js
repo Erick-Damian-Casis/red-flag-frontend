@@ -14,8 +14,7 @@ import Shop from "./pages/Shop";
 import Sales from "./pages/Sale";
 import AdminChat from "./pages/AdminChat";
 import Wishes from "./pages/Wishes";
-import {setToken} from "./services/PrivateServices";
-import Footer from "./components/Footer";
+
 
 
 function App() {

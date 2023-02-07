@@ -20,6 +20,16 @@ export const successAddCar=()=>{
     })
 }
 
+export const successFavorite=()=>{
+    return Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'El producto a sido agregado a tu lista de deseos',
+        showConfirmButton: false,
+        timer: 1500
+    })
+}
+
 export const successSale=()=>{
     return Swal.fire({
         position: 'center',

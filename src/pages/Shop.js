@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {createCar, createWish, getProducts, setToken} from "../services/PrivateServices";
 import FormCar from "../components/car/FormCar";
-import {successAddCar} from "../alerts";
+import {successAddCar, successFavorite} from "../alerts";
 import CarouselComponent from '../components/CarouselComponent'
 import Footer from "../components/Footer";
 
@@ -52,6 +52,7 @@ export default function Shop(){
 
         createWish(formData).then(response=>{
             console.log(response)
+            successFavorite()
         })
     }
 
