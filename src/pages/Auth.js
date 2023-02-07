@@ -1,13 +1,23 @@
 import FormLogin from "../components/auth/FormLogin";
 import FormRegister from "../components/auth/FormRegister";
 import {useState} from "react";
-import ecommerce from "./../assets/ecommerce.jpg"
+import ecommerce from "./../assets/ecommerce.avif"
+import Alert from "../alerts/Alert";
+
 
 export default function Auth({userLogin}){
     const [isLogin, setIsLogin]=useState(true);
+    const [logged, setLogged ]= useState(false)
 
     const handleIsLogin=()=>{
-        setIsLogin(!isLogin);
+        setIsLogin(true);
+    }
+
+    const handleErrorLogin =()=>{
+        setLogged(!logged)
+        setTimeout(()=>{
+            setLogged(false)
+        },5000)
     }
 
     return(
@@ -17,9 +27,15 @@ export default function Auth({userLogin}){
             </div>
             <div className="flex w-3/4 justify-center items-center bg-white">
                 { isLogin ?
-                    <FormLogin handleIsLogin={handleIsLogin} userLogin={userLogin}/> :
+                    <FormLogin handleIsLogin={handleIsLogin} userLogin={userLogin} handleErrorLogin={handleErrorLogin}/> :
                     <FormRegister handleIsLogin={handleIsLogin} isLogin={handleIsLogin}/>
                 }
+                {logged
+                    && <Alert>
+                        <p className="font-bold">Mensaje Informativo</p>
+                        <p className="text-sm">Las credenciales no son validas</p>
+                    </Alert>}
+
             </div>
         </div>)
 }

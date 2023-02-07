@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {BsMenuUp} from"react-icons/bs";
-import imageQuestion from "../assets/questionImage.jpg"
+import imageQuestion from "../assets/questionImage.png"
 import AccordionItem from "../components/help/AccordionItem";
 import {Link} from "react-router-dom";
 import {setToken} from "../services/PrivateServices";

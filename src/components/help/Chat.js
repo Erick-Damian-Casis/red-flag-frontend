@@ -12,10 +12,9 @@ export default function Chat(){
         window.setInterval(function(){
             let allMessages = [];
             Pusher.logToConsole = true;
-            const pusher = new Pusher('2f4231fddb5780bc5c2a', {
-                cluster: 'us2'
+            const pusher = new Pusher('d28ddd96d151342fb741', {
+                cluster: 'mt1'
             });
-
             const channel = pusher.subscribe('chat');
             channel.bind('message', function(data) {
                 allMessages.push(data)
