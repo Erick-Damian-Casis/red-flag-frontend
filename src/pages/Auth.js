@@ -10,7 +10,7 @@ export default function Auth({userLogin}){
     const [logged, setLogged ]= useState(false)
 
     const handleIsLogin=()=>{
-        setIsLogin(true);
+        setIsLogin(!isLogin);
     }
 
     const handleErrorLogin =()=>{
