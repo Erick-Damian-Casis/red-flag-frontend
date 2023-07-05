@@ -4,7 +4,7 @@ import { BsFillCameraFill } from "react-icons/bs";
 import {successRegister} from "../../alerts";
 
 export default function FormRegister({handleIsLogin, isLogin}){
-    const { register, handleSubmit, watch,formState:{errors} }=useForm();
+    const { register, handleSubmit, formState:{errors} }=useForm();
 
     const onSubmit=(data)=>{
         const formData = new FormData();
@@ -21,9 +21,6 @@ export default function FormRegister({handleIsLogin, isLogin}){
             successRegister()
         })
     }
-
-    const password = watch('password')
-    const passwordR = watch('passwordR')
 
     return(
         <div className="w-full min-h-screen bg-gray-50 flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
@@ -69,13 +66,9 @@ export default function FormRegister({handleIsLogin, isLogin}){
                         </div>
                         <div className="w-1/2 transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-red-500">
                             {errors.phone?.type==='required'&&  <p className="text-red-400 text-sm">* Este campo es requerido</p>}
-                            {errors.phone?.type==='maxLength'&&  <p className="text-red-400 text-sm">* El número de caracteres requerido es 10</p>}
-                            {errors.phone?.type==='minLength'&&  <p className="text-red-400 text-sm">* El número de caracteres requerido es 10</p>}
                             <input
                                 {...register('phone',{
-                                    required: true,
-                                    maxLength: 10,
-                                    minLength: 10,
+                                    required: true
                                 })}
                                 type="number"
                                 maxLength="10"
@@ -97,7 +90,6 @@ export default function FormRegister({handleIsLogin, isLogin}){
                             />
                         </div>
                         <div className="w-1/2 transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-red-500">
-                            {password!==passwordR &&  <p className="text-red-400 text-sm">* Las contraseñas no coinciden</p>}
                             {errors.passwordR?.type==='required'&&  <p className="text-red-400 text-sm">* Este campo es requerido</p>}
                             <input
                                 {...register('passwordR',{

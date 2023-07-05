@@ -23,16 +23,16 @@ export default function Help(){
     }
 
     const questions=[{
-        question: "¿Cómo puedo realizar un pedido en su sitio web?",
-        response: "Para realizar un pedido en nuestro sitio web, primero debe registrarse o iniciar sesión en su cuenta. Luego, navegue a través de nuestro catálogo de productos y seleccione los productos que desea agregar a su carrito de compras. Finalmente, siga los pasos para completar su compra."
+        question: "que version es mejor para desarrolla",
+        response: "v6.4 is our most exciting release yet with new data abstractions for reads, writes, and navigation hooks to easily keep your UI in sync with your data. The new feature overview will catch you up."
     },
         {
-            question: "¿Cuáles son sus opciones de pago?",
-            response: "Por el momento contamos con el método de pago de paypal."
+            question: "que version es mejor para desarrollar",
+            response: "v6.4 is our most exciting release yet with new data abstractions for reads, writes, and navigation hooks to easily keep your UI in sync with your data. The new feature overview will catch you up."
         },
         {
-            question: "¿Cómo actualizo la información de mi cuenta?",
-            response: "Para actualizar tu perfil, hay un apartado donde podras actualizar tu nombre, dirección de correo electrónico, número de teléfono en Red Flag, "
+            question: "que version es mejor para desarrollar",
+            response: "v6.4 is our most exciting release yet with new data abstractions for reads, writes, and navigation hooks to easily keep your UI in sync with your data. The new feature overview will catch you up."
         }
         ]
 
