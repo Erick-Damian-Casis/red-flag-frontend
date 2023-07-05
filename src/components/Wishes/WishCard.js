@@ -1,4 +1,4 @@
-import {BsFillCartFill, BsFillHeartFill} from "react-icons/bs";
+import {BsFillHeartFill} from "react-icons/bs";
 
 export default function WishCard({products, deleteWish}){
 
